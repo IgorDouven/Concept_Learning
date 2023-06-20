@@ -39,7 +39,7 @@ end
 
 @everywhere luv_df = DataFrame(luv_coords)
 
-# run the experiments both for 10 and 11 clusters, given that we are leaving out the achromatic chips (and gray is typically not represented in the naming data for the 320 chromatic WCS chips)
+# run the experiments both for 10 and 11 clusters, given that we are leaving out the achromatic chips (and gray is sometimes not represented in the naming data for the 320 chromatic WCS chips)
 @everywhere label10(v::Vector{Vector{Float64}}) = [ findmin([ Distances.evaluate(Euclidean(), v[i], luv_df[j, :]) for i in 1:10 ])[2] for j in 1:size(luv_df, 1) ]
 @everywhere label11(v::Vector{Vector{Float64}}) = [ findmin([ Distances.evaluate(Euclidean(), v[i], luv_df[j, :]) for i in 1:11 ])[2] for j in 1:size(luv_df, 1) ]
 
