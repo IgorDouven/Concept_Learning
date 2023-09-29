@@ -31,7 +31,7 @@ end
 end
 =#
 
-@everywhere coords_full = CSV.read("/home/igor/Projects/Carnap_Analogy/munsell_rgb.csv", DataFrame) |> Matrix
+@everywhere coords_full = CSV.read(".../munsell_rgb.csv", DataFrame) |> Matrix
 @everywhere luv_coords_full = [ luv_convert(coords_full, i) for i in 1:size(coords_full, 1) ]
 
 @everywhere coords = CSV.read(".../rgb320.csv", DataFrame; header=false)./255 |> Matrix
